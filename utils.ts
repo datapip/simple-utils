@@ -22,12 +22,12 @@ export const memoize = (func: Function): Function => {
 };
 
 export const debounce = (func: Function, delay: number): Function => {
-  let timeoutId: number;
+  let timeoutId: any;
 
   return (...args: any) => {
-    clearTimeout(timeoutId);
+    window.clearTimeout(timeoutId);
 
-    timeoutId = setTimeout(() => {
+    timeoutId = window.setTimeout(() => {
       func.apply(this, args);
     }, delay);
   };
